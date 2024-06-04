@@ -7,8 +7,7 @@ from scipy import interpolate
 
 def find_nearest(array, value):
     array = np.asarray(array)
-    idx = (np.abs(array - value)).argmin()
-    return idx
+    return (np.abs(array - value)).argmin()
 
 
 def unpackConfiguration(
@@ -141,7 +140,6 @@ def unpackConfiguration(
     zl = np.array(returnzl(R, Z, Bx, np.absolute(Bpol)))
     if Type == "Box":
         Xpoint = find_nearest(zl, zl[-1] * zxoverL)
-    zx = zl[Xpoint]
 
     # if Type == "Box":
     #     for i in range(0,len(TotalField)):
@@ -154,9 +152,6 @@ def unpackConfiguration(
     #     Xpoint = Xpoint-1
 
     polLengthArray = np.array(returnll(R, Z))
-
-    freal = interpolate.interp1d(zl, polLengthArray, kind="cubic")
-
     Bx = np.abs(TotalField[Xpoint])
 
     # Bpol = Bpol*0 - 0.032/R
@@ -164,7 +159,7 @@ def unpackConfiguration(
     # cut kinked data
 
     # zXpoint = np.amax(Z)
-    if returnSBool == True:
+    if returnSBool is True:
         S = returnS(R, Z, TotalField, Bpol)
         return zl, TotalField, Xpoint, R, Z, Rs, Zs, polLengthArray, Bpol, S
     else:

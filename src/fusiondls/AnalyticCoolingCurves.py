@@ -536,7 +536,7 @@ def LfuncKallenbachNe(T):
 
 
 def LfuncKallenbach(species_choice):
-    radiation = dict()
+    radiation = {}
 
     # Temperature array
     T = np.array(
@@ -1378,9 +1378,8 @@ def LfuncKallenbach(species_choice):
     T[Tmax_idx] = Tmax  # Make sure this point is exactly Tmax
     radiation[species_choice][Tmax_idx + 1 :] = 0
 
-    Lfunc = interpolate.CubicSpline(T, radiation[species_choice])
+    return interpolate.CubicSpline(T, radiation[species_choice])
 
-    return Lfunc
 
 
 # #Custom gaussian impurity cooling curve if desired
@@ -1391,7 +1390,6 @@ def LfunLengFunccGauss(T, width=2):
 # reader for AMJUL files
 def ratesAmjul(file, T, n):
     rawdata = np.loadtxt(file)
-    unpackedData = []
     counter = 0
     rates = 0
     for i in range(3):
@@ -1413,7 +1411,6 @@ def ratesAmjul(file, T, n):
 # reader for AMJUL CX files
 def ratesAmjulCX(file, T, E):
     rawdata = np.loadtxt(file)
-    unpackedData = []
     counter = 0
     rates = 0
     for i in range(3):

@@ -550,7 +550,7 @@ def LRBv21(
             output["spol_onset"] = spol_onset
 
             grad = np.gradient(crel_list)
-            for i, val in enumerate(grad):
+            for i, _val in enumerate(grad):
                 if i > 0 and np.sign(grad[i]) != np.sign(grad[i - 1]):
                     crel_list_trim[:i] = np.nan
                     cvar_list_trim[:i] = np.nan

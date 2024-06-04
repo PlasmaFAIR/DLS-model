@@ -43,8 +43,7 @@ def CfInt(spar, B_field, sx, L, sh=0, kappa1=2500):
     for t in T:
         Q.append(LfuncN(t))
     C0 = (2 * kappa1 * trapezoid(Q * T ** (1 / 2), T)) ** (-1 / 2)
-    Cf = Cf * C0
-    return Cf
+    return Cf * C0
 
 
 def integrand(s, sx, L, B_field):
