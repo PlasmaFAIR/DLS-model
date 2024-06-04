@@ -487,17 +487,11 @@ def LRBv21(
         Qrad = []
         for i, Tf in enumerate(st.T):
             if si.control_variable == "impurity_frac":
-                Qrad.append(
-                    ((si.nu0**2 * st.Tu**2) / Tf**2) * st.cvar * si.Lfunc(Tf)
-                )
+                Qrad.append(((si.nu0**2 * st.Tu**2) / Tf**2) * st.cvar * si.Lfunc(Tf))
             elif si.control_variable == "density":
-                Qrad.append(
-                    ((st.cvar**2 * st.Tu**2) / Tf**2) * si.cz0 * si.Lfunc(Tf)
-                )
+                Qrad.append(((st.cvar**2 * st.Tu**2) / Tf**2) * si.cz0 * si.Lfunc(Tf))
             elif si.control_variable == "power":
-                Qrad.append(
-                    ((si.nu0**2 * st.Tu**2) / Tf**2) * si.cz0 * si.Lfunc(Tf)
-                )
+                Qrad.append(((si.nu0**2 * st.Tu**2) / Tf**2) * si.cz0 * si.Lfunc(Tf))
 
         # Pad some profiles with zeros to ensure same length as S
         output["Sprofiles"].append(si.S)

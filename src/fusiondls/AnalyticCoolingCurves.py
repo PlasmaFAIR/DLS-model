@@ -526,8 +526,6 @@ def LfuncKallenbachNe(T):
     return Lz
 
 
-
-
 def LfuncKallenbach(species_choice):
     radiation = {}
 
@@ -1372,7 +1370,6 @@ def LfuncKallenbach(species_choice):
     radiation[species_choice][Tmax_idx + 1 :] = 0
 
     return interpolate.CubicSpline(T, radiation[species_choice])
-
 
 
 # #Custom gaussian impurity cooling curve if desired

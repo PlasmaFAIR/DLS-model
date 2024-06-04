@@ -244,7 +244,6 @@ def file_read(filename):
         return pkl.load(filename)
 
 
-
 def pad_profile(S, data):
     """
     DLS terminates the domain at the front meaning downstream domain is ignored.
@@ -256,4 +255,3 @@ def pad_profile(S, data):
     actual_length = len(data)
 
     return np.insert(data, 0, np.zeros(intended_length - actual_length))
-
