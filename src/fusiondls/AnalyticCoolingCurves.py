@@ -115,12 +115,7 @@ def LfuncKallenbachN(T):
     elif T > 300 or T < 1:
         Lz = 0
 
-    try:
-        Lz = abs(Lz)
-    except:
-        Lz = 0
-
-    return Lz
+    return np.abs(Lz)
 
 
 def LfuncKallenbachAr(T):
@@ -179,12 +174,7 @@ def LfuncKallenbachAr(T):
     elif T > 300 or T < 1:
         Lz = 0
 
-    try:
-        Lz = abs(Lz)
-    except:
-        Lz = 0
-
-    return Lz
+    return np.abs(Lz)
 
 
 def LfuncKallenbachAr100B(T):
@@ -262,12 +252,7 @@ def LfuncKallenbachAr100B(T):
     if T < 1:
         Lz = 0
 
-    try:
-        Lz = abs(Lz)
-    except:
-        Lz = 0
-
-    return Lz
+    return np.abs(Lz)
 
 
 def LfuncKallenbachAr200(T):
@@ -326,12 +311,7 @@ def LfuncKallenbachAr200(T):
     elif T > 200 or T < 1:
         Lz = 0
 
-    try:
-        Lz = abs(Lz)
-    except:
-        Lz = 0
-
-    return Lz
+    return np.abs(Lz)
 
 
 def LfuncKallenbachAr100(T):
@@ -390,12 +370,7 @@ def LfuncKallenbachAr100(T):
     elif T > 100 or T < 1:
         Lz = 0
 
-    try:
-        Lz = abs(Lz)
-    except:
-        Lz = 0
-
-    return Lz
+    return np.abs(Lz)
 
 
 def LfuncKallenbachAr150(T):
@@ -454,12 +429,7 @@ def LfuncKallenbachAr150(T):
     elif T > 150 or T < 1:
         Lz = 0
 
-    try:
-        Lz = abs(Lz)
-    except:
-        Lz = 0
-
-    return Lz
+    return np.abs(Lz)
 
 
 def LfuncKallenbachNe(T):
@@ -518,12 +488,7 @@ def LfuncKallenbachNe(T):
     elif T > 300 or T < 1:
         Lz = 0
 
-    try:
-        Lz = abs(Lz)
-    except:
-        Lz = 0
-
-    return Lz
+    return np.abs(Lz)
 
 
 def LfuncKallenbach(species_choice):
