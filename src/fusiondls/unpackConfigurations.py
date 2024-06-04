@@ -138,8 +138,8 @@ def unpackConfiguration(
     if returnSBool:
         S = returnS(R, Z, TotalField, Bpol)
         return zl, TotalField, Xpoint, R, Z, Rs, Zs, polLengthArray, Bpol, S
-    else:
-        return zl, TotalField, Xpoint, R, Z, Rs, Zs, polLengthArray, Bpol
+
+    return zl, TotalField, Xpoint, R, Z, Rs, Zs, polLengthArray, Bpol
 
 
 def returnll(R, Z):

@@ -262,9 +262,9 @@ def unpackConfigurationMK(
     # Output by geometry type
     if Type != "box":
         return profiles[Type]
-    else:
-        print("Slab geometry not supported yet")
-        return None
+
+    print("Slab geometry not supported yet")
+    return None
 
 
 def returnll(R, Z):

@@ -120,9 +120,10 @@ class Profile:
         Bx = Btot[self.Xpoint]
         BxBt_base = Bx / Bt_base
 
-        if BxBt is None and scale_factor is None:
-            raise ValueError("Specify either scale factor or flux expansion")
-        elif BxBt is None:
+        if BxBt is None:
+            if scale_factor is None:
+                raise ValueError("Specify either scale factor or flux expansion")
+
             BxBt = BxBt_base * scale_factor
 
         if BxBt == 0:
@@ -696,8 +697,8 @@ def cord_spline(x, y, return_spline=False):
 
     if return_spline:
         return spl
-    else:
-        return R, Z
+
+    return R, Z
 
 
 def get_cord_distance(x, y):
