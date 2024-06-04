@@ -2,8 +2,8 @@ import numpy as np
 from scipy import interpolate
 
 
-# Nitrogen based cooling curve used in Lipschultz 2016
 def LfuncN(T):
+    """Nitrogen based cooling curve used in Lipschultz 2016"""
     answer = 0
     if T >= 1 and T <= 80:
         answer = 5.9e-34 * (T - 1) ** (0.5)
@@ -14,8 +14,8 @@ def LfuncN(T):
     return answer
 
 
-# Ne based cooling curve produced by Matlab polynominal curve fitting "polyval" (Ryoko 2020 Nov)
 def LfuncNe(T):
+    """Ne based cooling curve produced by Matlab polynominal curve fitting "polyval" (Ryoko 2020 Nov)"""
     answer = 0
     if T >= 3 and T <= 100:
         answer = (
@@ -35,8 +35,8 @@ def LfuncNe(T):
     return answer
 
 
-# Ar based cooling curve produced by Matlab polynominal curve fitting "polyval" (Ryoko 2020 Nov)
 def LfuncAr(T):
+    """Ar based cooling curve produced by Matlab polynominal curve fitting "polyval" (Ryoko 2020 Nov)"""
     answer = 0
     if T >= 1.5 and T <= 100:
         answer = (
@@ -60,7 +60,7 @@ def LfuncAr(T):
 
 
 def LfuncKallenbachN(T):
-    # Nitrogen, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3
+    """Nitrogen, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3"""
     if T >= 1 and T < 5:
         Lz = np.poly1d(
             [
@@ -124,7 +124,7 @@ def LfuncKallenbachN(T):
 
 
 def LfuncKallenbachAr(T):
-    # Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3
+    """Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3"""
     if T >= 1 and T < 5:
         Lz = np.poly1d(
             [
@@ -188,7 +188,7 @@ def LfuncKallenbachAr(T):
 
 
 def LfuncKallenbachAr100B(T):
-    # Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3
+    """Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3"""
     if T >= 1 and T < 5:
         Lz = np.poly1d(
             [
@@ -271,7 +271,7 @@ def LfuncKallenbachAr100B(T):
 
 
 def LfuncKallenbachAr200(T):
-    # Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3
+    """Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3"""
     if T >= 1 and T < 5:
         Lz = np.poly1d(
             [
@@ -335,7 +335,7 @@ def LfuncKallenbachAr200(T):
 
 
 def LfuncKallenbachAr100(T):
-    # Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3
+    """Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3"""
     if T >= 1 and T < 5:
         Lz = np.poly1d(
             [
@@ -399,7 +399,7 @@ def LfuncKallenbachAr100(T):
 
 
 def LfuncKallenbachAr150(T):
-    # Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3
+    """Argon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3"""
     if T >= 1 and T < 5:
         Lz = np.poly1d(
             [
@@ -463,7 +463,7 @@ def LfuncKallenbachAr150(T):
 
 
 def LfuncKallenbachNe(T):
-    # Neon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3
+    """Neon, Tau = 1ms, Kallenbach 2018, xlsx from David Moulton, units W/m3"""
     if T >= 1 and T < 5:
         Lz = np.poly1d(
             [
@@ -1372,13 +1372,13 @@ def LfuncKallenbach(species_choice):
     return interpolate.CubicSpline(T, radiation[species_choice])
 
 
-# #Custom gaussian impurity cooling curve if desired
 def LfunLengFunccGauss(T, width=2):
+    """Custom gaussian impurity cooling curve if desired"""
     return 1e-31 * np.exp(-((T - 5) ** 2) / (width))
 
 
-# reader for AMJUL files
 def ratesAmjul(file, T, n):
+    """Read AMJUL files"""
     rawdata = np.loadtxt(file)
     counter = 0
     rates = 0
@@ -1398,8 +1398,8 @@ def ratesAmjul(file, T, n):
     return rates * 1e-6
 
 
-# reader for AMJUL CX files
 def ratesAmjulCX(file, T, E):
+    """Read AMJUL CX files"""
     rawdata = np.loadtxt(file)
     counter = 0
     rates = 0
