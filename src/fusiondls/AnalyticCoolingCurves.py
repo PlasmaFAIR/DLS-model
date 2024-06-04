@@ -118,7 +118,6 @@ def LfuncKallenbachN(T):
     try:
         Lz = abs(Lz)
     except:
-        # print("Curve failed, T = {}".format(T))
         Lz = 0
 
     return Lz
@@ -183,7 +182,6 @@ def LfuncKallenbachAr(T):
     try:
         Lz = abs(Lz)
     except:
-        # print("Curve failed, T = {}".format(T))
         Lz = 0
 
     return Lz
@@ -267,7 +265,6 @@ def LfuncKallenbachAr100B(T):
     try:
         Lz = abs(Lz)
     except:
-        # print("Curve failed, T = {}".format(T))
         Lz = 0
 
     return Lz
@@ -332,7 +329,6 @@ def LfuncKallenbachAr200(T):
     try:
         Lz = abs(Lz)
     except:
-        # print("Curve failed, T = {}".format(T))
         Lz = 0
 
     return Lz
@@ -397,7 +393,6 @@ def LfuncKallenbachAr100(T):
     try:
         Lz = abs(Lz)
     except:
-        # print("Curve failed, T = {}".format(T))
         Lz = 0
 
     return Lz
@@ -462,7 +457,6 @@ def LfuncKallenbachAr150(T):
     try:
         Lz = abs(Lz)
     except:
-        # print("Curve failed, T = {}".format(T))
         Lz = 0
 
     return Lz
@@ -527,7 +521,6 @@ def LfuncKallenbachNe(T):
     try:
         Lz = abs(Lz)
     except:
-        # print("Curve failed, T = {}".format(T))
         Lz = 0
 
     return Lz
