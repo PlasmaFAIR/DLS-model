@@ -79,7 +79,6 @@ extend-select = [
   "I",           # isort
   "ARG",         # flake8-unused-arguments
   "C4",          # flake8-comprehensions
-  "EM",          # flake8-errmsg
   "ICN",         # flake8-import-conventions
   "G",           # flake8-logging-format
   "PGH",         # pygrep-hooks
@@ -95,6 +94,7 @@ extend-select = [
   "EXE",         # flake8-executable
   "NPY",         # NumPy specific rules
   "PD",          # pandas-vet
+  "FURB",        # refurb
 ]
 ignore = [
   "PLR2004",     # magic-comparison
