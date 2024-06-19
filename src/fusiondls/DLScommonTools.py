@@ -3,9 +3,6 @@ import pickle as pkl
 import numpy as np
 from scipy import interpolate
 
-from .AnalyticCoolingCurves import *
-from .unpackConfigurationsMK import *
-
 
 def scale_BxBt(Btot, Xpoint, scale_factor=0, BxBt=0):
     # Scale a Btot profile to have an arbitrary flux expansion
