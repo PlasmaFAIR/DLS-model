@@ -1353,10 +1353,10 @@ def ratesAmjul(file, T, n):
                 int(i * len(rawdata) / 3) : int((i + 1) * len(rawdata) / 3)
             ][:, j]
             nei = np.log(n * 1e-14) ** (counter)
-            counter = counter + 1
+            counter += 1
             for ti in range(9):
                 tei = np.log(T) ** (ti)
-                rates = rates + tei * nei * section[ti]
+                rates += tei * nei * section[ti]
 
     rates = np.exp(rates)
 
@@ -1374,10 +1374,10 @@ def ratesAmjulCX(file, T, E):
                 int(i * len(rawdata) / 3) : int((i + 1) * len(rawdata) / 3)
             ][:, j]
             nei = np.log(E) ** (counter)
-            counter = counter + 1
+            counter += 1
             for ti in range(9):
                 tei = np.log(T) ** (ti)
-                rates = rates + tei * nei * section[ti]
+                rates += tei * nei * section[ti]
 
     rates = np.exp(rates)
 

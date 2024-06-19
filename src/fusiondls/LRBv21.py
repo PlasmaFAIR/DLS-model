@@ -406,9 +406,9 @@ def LRBv21(
             # Double or halve cvar until the error flips sign
             for k1 in range(si.timeout * 2):
                 if st.error1 > 0:
-                    st.cvar = st.cvar / 2
+                    st.cvar /= 2
                 elif st.error1 < 0:
-                    st.cvar = st.cvar * 2
+                    st.cvar *= 2
 
                 st = iterate(si, st)
 

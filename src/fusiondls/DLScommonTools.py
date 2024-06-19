@@ -31,7 +31,7 @@ def scale_BxBt(Btot, Xpoint, scale_factor=0, BxBt=0):
 
     # Translate to keep the same Bx as before
     transl_factor = Btot_new[Xpoint] - Bx_base
-    Btot_new = Btot_new - transl_factor
+    Btot_new -= transl_factor
 
     # Replace upstream of the Xpoint with the old data
     # So that we are only scaling downstream of Xpoint

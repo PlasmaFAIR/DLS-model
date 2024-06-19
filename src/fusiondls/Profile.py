@@ -139,7 +139,7 @@ class Profile:
         old_span = Bx - Bt_base
         new_span = Bx - Bt_new
         Btot_leg_new = Btot_leg * (new_span / old_span)  # Scale to get Bx/Bt ratio
-        Btot_leg_new = Btot_leg_new - (Btot_leg_new[-1] - Bx)  # Offset to realign Bx
+        Btot_leg_new -= Btot_leg_new[-1] - Bx  # Offset to realign Bx
 
         if verbose:
             print(
@@ -756,7 +756,7 @@ def returnll(R, Z):
     PrevZ = Z[0]
     for i in range(len(R)):
         dl = np.sqrt((PrevR - R[i]) ** 2 + (PrevZ - Z[i]) ** 2)
-        currentl = currentl + dl
+        currentl += dl
         ll.append(currentl)
         PrevR = R[i]
         PrevZ = Z[i]
@@ -772,7 +772,7 @@ def returnS(R, Z, B, Bpol):
     for i in range(len(R)):
         dl = np.sqrt((PrevR - R[i]) ** 2 + (PrevZ - Z[i]) ** 2)
         ds = dl * np.abs(B[i]) / np.abs(Bpol[i])
-        currents = currents + ds
+        currents += ds
         s.append(currents)
         PrevR = R[i]
         PrevZ = Z[i]

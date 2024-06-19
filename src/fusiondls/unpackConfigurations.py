@@ -15,7 +15,7 @@ def unpackConfiguration(
 ):
     rootgrp = Dataset(File, "r", format="NETCDF4")
     sep = rootgrp["jsep"][0]
-    sep = sep + sepadd
+    sep += sepadd
     bb = rootgrp["bb"]
     Bpol = bb[0][sep] * polModulator
     TotalField = np.sqrt(bb[3][sep] ** 2 + bb[0][sep] ** 2)
@@ -150,7 +150,7 @@ def returnll(R, Z):
     PrevZ = Z[0]
     for i in range(len(R)):
         dl = np.sqrt((PrevR - R[i]) ** 2 + (PrevZ - Z[i]) ** 2)
-        currentl = currentl + dl
+        currentl += dl
         ll.append(currentl)
         PrevR = R[i]
         PrevZ = Z[i]
@@ -166,7 +166,7 @@ def returnS(R, Z, B, Bpol):
     for i in range(len(R)):
         dl = np.sqrt((PrevR - R[i]) ** 2 + (PrevZ - Z[i]) ** 2)
         ds = dl * np.abs(B[i]) / np.abs(Bpol[i])
-        currents = currents + ds
+        currents += ds
         s.append(currents)
         PrevR = R[i]
         PrevZ = Z[i]
@@ -182,7 +182,7 @@ def returnzl(R, Z, BX, Bpol):
     for i in range(len(R)):
         dl = np.sqrt((PrevR - R[i]) ** 2 + (PrevZ - Z[i]) ** 2)
         dz = dl * BX / (Bpol[i])
-        CurrentZ = CurrentZ + dz
+        CurrentZ += dz
         zl.append(CurrentZ)
         PrevR = R[i]
         PrevZ = Z[i]
