@@ -6,8 +6,6 @@ from scipy import interpolate
 from .AnalyticCoolingCurves import *
 from .unpackConfigurationsMK import *
 
-# import colorcet as cc
-
 
 def scale_BxBt(Btot, Xpoint, scale_factor=0, BxBt=0):
     # Scale a Btot profile to have an arbitrary flux expansion
@@ -190,8 +188,6 @@ def make_arrays(
 def make_window_band(d, o, spol_middle, size=0.05, q=False):
     """Make detachment window band with a middle at the provided SPol coordinate
     The default window size is 5%"""
-    # o = copy.deepcopy(o)
-    # d = copy.deepcopy(d)
 
     band = {}
     crel = np.array(o["crel"]) if q is False else 1 / np.array(o["crel"])
