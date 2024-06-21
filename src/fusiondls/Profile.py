@@ -733,7 +733,7 @@ def shift_points(R, Z, offsets, factor=1):
     spl = cord_spline(R, Z, return_spline=True)
     x, y = [], []
 
-    for _i, point in enumerate(offsets):
+    for point in offsets:
         position = point["pos"]
         offsetx = point.get("offsetx", 0)
         offsety = point.get("offsety", 0)
