@@ -99,3 +99,11 @@ extend-select = [
 ignore = [
   "PLR2004",     # magic-comparison
 ]
+
+[[tool.mypy.overrides]]
+module = "scipy.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "netCDF4"
+ignore_missing_imports = true
