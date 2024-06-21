@@ -192,7 +192,7 @@ class SimulationInputs:
 
     def __init__(self):
         # Physics constants
-        self.kappa0 = 2500  #
+        self.kappa0 = 2500
         self.mi = 3 * 10 ** (-27)
         self.echarge = 1.60 * 10 ** (-19)
 
@@ -545,7 +545,7 @@ def LRBv21(
 
             grad = np.gradient(crel_list)
             for i, _val in enumerate(grad):
-                if i > 0 and np.sign(grad[i]) != np.sign(grad[i - 1]):
+                if i > 0 and np.sign(_val) != np.sign(grad[i - 1]):
                     crel_list_trim[:i] = np.nan
                     cvar_list_trim[:i] = np.nan
 

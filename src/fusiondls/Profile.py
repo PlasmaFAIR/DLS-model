@@ -376,7 +376,7 @@ class Profile:
         if linesettings is None:
             linesettings = {}
         if ax is None:
-            fig, ax = plt.subplots(dpi=dpi)
+            _fig, ax = plt.subplots(dpi=dpi)
             ax.plot(
                 self["R"],
                 self["Z"],
@@ -548,7 +548,7 @@ class Morph:
         return prof
 
     def plot_profile(self, prof, dpi=100, ylim=(None, None), xlim=(None, None)):
-        fig, ax = plt.subplots(dpi=dpi)
+        _fig, ax = plt.subplots(dpi=dpi)
 
         s = self.start
         p = prof
@@ -598,7 +598,7 @@ def compare_profile_topologies(base_profile, profiles):
     basestyle = {"c": "black"}
     xstyle = {"marker": "+", "linewidth": 2, "s": 150, "c": "r", "zorder": 100}
 
-    S_pol_xpoint_max = max([p["Spol"][p["Xpoint"]] for p in profiles])
+    S_pol_xpoint_max = max(p["Spol"][p["Xpoint"]] for p in profiles)
 
     Spol_shift_base = S_pol_xpoint_max - d["Spol"][d["Xpoint"]]
 

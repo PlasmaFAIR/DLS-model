@@ -11,4 +11,4 @@ from .AnalyticCoolingCurves import LfuncN
 from .DLScommonTools import file_read, file_write, make_arrays
 from .LRBv21 import LRBv21
 
-__all__ = ["file_read", "LfuncN", "LRBv21", "file_write", "make_arrays"]
+__all__ = ["LRBv21", "LfuncN", "file_read", "file_write", "make_arrays"]

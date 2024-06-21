@@ -184,7 +184,7 @@ def unpackConfigurationMK(
 
         # Reverse data if we want it target to midplane
         if convention == "target_to_midplane":
-            for param in (x for x in d if x not in ["Xpoint"]):
+            for param in (x for x in d if x != "Xpoint"):
                 d[param] = d[param][::-1]
             d["Xpoint"] = len(d["R"]) - d["Xpoint"] - 1
 

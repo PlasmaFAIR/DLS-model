@@ -101,7 +101,7 @@ def refineGrid(
     pnew = {}
     pnew["S"] = Snew
     for par in ["S", "Spol", "R", "Z", "Btot", "Bpol"]:
-        if par not in ("Xpoint", "S"):
+        if par not in {"Xpoint", "S"}:
             pnew[par] = sp.interpolate.make_interp_spline(S, p[par], k=2)(Snew)
 
             if diagnostic_plot:
