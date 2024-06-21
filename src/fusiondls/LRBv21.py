@@ -8,7 +8,6 @@ from scipy.integrate import cumulative_trapezoid
 from .DLScommonTools import pad_profile
 from .Iterate import iterate
 from .refineGrid import refineGrid
-from .unpackConfigurationsMK import *
 
 
 class SimulationState:
