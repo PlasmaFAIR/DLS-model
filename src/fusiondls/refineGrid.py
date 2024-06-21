@@ -58,9 +58,9 @@ def refineGrid(
         )
         dSnew *= S[-1] / dSnew.sum()  # Normalise to the original S
         Snew = np.cumsum(dSnew)
+        dSnew2 = dSnew
         if i != 0:
             residual = abs((dSnew2[-1] - dSnew[-1]) / dSnew2[-1])
-        dSnew2 = dSnew
 
         if diagnostic_plot is True:
             axes[0].plot(Snew, dSnew, label=i)
