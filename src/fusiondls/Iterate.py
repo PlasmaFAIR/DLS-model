@@ -25,11 +25,10 @@ def LengFunc(s, y, si, st):
     """
 
     nu, Tu, cz, qradial = st.nu, st.Tu, st.cz, st.qradial
-    kappa0, _qpllu0, alpha, radios, S, B, Xpoint, Lfunc = (
+    kappa0, _qpllu0, alpha, S, B, Xpoint, Lfunc = (
         si.kappa0,
         si.qpllu0,
         si.alpha,
-        si.radios,
         si.S,
         si.B,
         si.Xpoint,
@@ -38,13 +37,7 @@ def LengFunc(s, y, si, st):
 
     qoverB, T = y
 
-    fieldValue = 0
-    if s > S[-1]:
-        fieldValue = B(S[-1])
-    elif s < S[0]:
-        fieldValue = B(S[0])
-    else:
-        fieldValue = B(s)
+    fieldValue = B(np.clip(s, S[0], S[-1]))
 
     # add a constant radial source of heat above the X point, which is qradial = qpll at Xpoint/np.abs(S[-1]-S[Xpoint]
     # i.e. radial heat entering SOL evenly spread between midplane and xpoint needs to be sufficient to get the
@@ -54,14 +47,14 @@ def LengFunc(s, y, si, st):
     # dqoverBds = dqoverBds/fieldValue
     dqoverBds = ((nu**2 * Tu**2) / T**2) * cz * Lfunc(T) / fieldValue
 
-    if radios["upstreamGrid"] and s > S[Xpoint]:
+    if si.upstreamGrid and s > S[Xpoint]:
         # The second term here converts the x point qpar to a radial heat source acting between midplane and the xpoint
         # account for flux expansion to Xpoint
         dqoverBds -= qradial / fieldValue
 
     # Flux limiter
     dtds = 0
-    if radios["fluxlim"]:
+    if si.fluxlim:
         # set density using constant pressure assumption (missing factor of 2 at target due to lack of Bohm condition)
         ne = nu * Tu / T
         dtds = (
@@ -175,7 +168,7 @@ def iterate(si, st):
 
     # If upstream grid, qpllu1 is at the midplane and is solved until it's 0. It then gets radial transport
     # so that the xpoint Q is qpllu0. If uypstramGrid=False, qpllu1 is solved to match qpllu0 at the Xpoint.
-    if si.radios["upstreamGrid"]:
+    if si.upstreamGrid:
         st.error1 = (st.qpllu1 - 0) / si.qpllu0
     else:
         st.error1 = (st.qpllu1 - si.qpllu0) / si.qpllu0

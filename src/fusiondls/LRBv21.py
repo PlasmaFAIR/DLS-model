@@ -1,6 +1,6 @@
 from collections import defaultdict
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 from timeit import default_timer as timer
 
 import numpy as np
@@ -121,8 +121,6 @@ class SimulationInputs:
     """Cooling curve function, can be LfuncKallenbachx where x is Ne, Ar or N."""
     alpha: float
     """Heat flux limiter (WIP do not use)"""
-    radios: dict
-    """Contains flags for ionisation (WIP do not use), upstreamGrid (allows full flux tube) and fluxlim (WIP do not use)"""
     SparRange: FloatArray
     """List of S parallel locations to solve for"""
     Xpoint: int
@@ -154,6 +152,13 @@ class SimulationInputs:
     """Maximum number of iterations for each loop before warning or error"""
     Lz: FloatArray = field(init=False)
     """Cooling curve data: [0] contains temperatures in [eV] and [1] the corresponding cooling values in [W/m^3]"""
+    upstreamGrid: bool = True
+    """If true, includes domain above X-point and source of divertor
+    heat flux comes from radial transport upstream, with $T_u$ at the midplane.
+
+    If false, heat flux simply enters at the X-point as $q_i$, and $T_u$ is at the X-point"""
+    fluxlim: bool = False
+    """WIP. Turns on flux limiter with coefficient alpha"""
 
     def __post_init__(self):
         # Initialise cooling curve
@@ -166,7 +171,6 @@ class SimulationInputs:
 
 def run_dls(
     constants: dict,
-    radios: dict,
     d: dict,
     SparRange: FloatArray,
     control_variable: str = "impurity_frac",
@@ -190,8 +194,6 @@ def run_dls(
     Parameters
     ----------
     constants:
-        dict of options
-    radios:
         dict of options
     control_variable:
         either impurity_frac, density or power
@@ -221,7 +223,6 @@ def run_dls(
         Ttol=Ttol,
         URF=URF,
         timeout=timeout,
-        radios=radios,
         control_variable=control_variable,
         Xpoint=d["Xpoint"],
         S=d["S"],
@@ -281,7 +282,7 @@ def run_dls(
 
         # Inital guess for the value of qpll integrated across connection length
         qavLguess = 0.0
-        if si.radios["upstreamGrid"]:
+        if si.upstreamGrid:
             if st.s[0] < si.S[si.Xpoint]:
                 qavLguess = (
                     (si.qpllu0) * (si.S[si.Xpoint] - st.s[0])
@@ -520,8 +521,7 @@ def run_dls(
     elif len(SparRange) == 1:
         output["crel"] = 1
         output["threshold"] = st.cvar
-    output["constants"] = constants
-    output["radios"] = si.radios
+    output["constants"] = asdict(si)
     output["state"] = st
 
     # Convert back to regular dict
