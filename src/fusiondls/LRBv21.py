@@ -8,7 +8,7 @@ from scipy import interpolate
 from scipy.constants import elementary_charge, physical_constants
 from scipy.integrate import cumulative_trapezoid
 
-from .DLScommonTools import pad_profile
+from .DLScommonTools import pad_profile, MagneticGeometry
 from .Iterate import iterate
 from .refineGrid import refineGrid
 from .typing import FloatArray
@@ -172,7 +172,7 @@ class SimulationInputs:
 
 def run_dls(
     constants: dict,
-    d: dict,
+    geometry: MagneticGeometry,
     SparRange: FloatArray,
     control_variable: str = "impurity_frac",
     verbosity: int = 0,
@@ -225,12 +225,12 @@ def run_dls(
         URF=URF,
         timeout=timeout,
         control_variable=control_variable,
-        Xpoint=d["Xpoint"],
-        S=d["S"],
-        Spol=d["Spol"],
-        Btot=d["Btot"],
-        Bpol=d["Bpol"],
-        B=interpolate.interp1d(d["S"], d["Btot"], kind="cubic"),
+        Xpoint=geometry.Xpoint,
+        S=geometry.S,
+        Spol=geometry.Spol,
+        Btot=geometry.Btot,
+        Bpol=geometry.Bpol,
+        B=interpolate.interp1d(geometry.S, geometry.Btot, kind="cubic"),
         SparRange=SparRange,
         **constants,
     )
@@ -251,7 +251,7 @@ def run_dls(
 
         if dynamicGrid:
             newProfile = refineGrid(
-                d,
+                geometry,
                 SparFront,
                 fine_ratio=dynamicGridRefinementRatio,
                 width=dynamicGridRefinementWidth,
@@ -270,7 +270,7 @@ def run_dls(
             point = st.point = np.argmin(abs(si.S - SparFrontOld))
 
         else:
-            point = st.point = np.argmin(abs(d["S"] - SparFront))
+            point = st.point = np.argmin(abs(geometry.S - SparFront))
 
         print(f"{SparFront:.2f}...", end="")
 
