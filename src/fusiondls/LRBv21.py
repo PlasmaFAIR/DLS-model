@@ -1,6 +1,6 @@
 from collections import defaultdict
 from collections.abc import Callable
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from timeit import default_timer as timer
 
 import numpy as np
@@ -8,11 +8,11 @@ from scipy import interpolate
 from scipy.constants import elementary_charge, physical_constants
 from scipy.integrate import cumulative_trapezoid
 
-from .DLScommonTools import pad_profile, MagneticGeometry
+from .DLScommonTools import pad_profile
+from .geometry import MagneticGeometry
 from .Iterate import iterate
 from .refineGrid import refineGrid
 from .typing import FloatArray
-
 
 deuterium_mass = physical_constants["deuteron mass"][0]
 

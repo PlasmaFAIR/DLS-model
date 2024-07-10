@@ -1,7 +1,7 @@
 import pathlib
 
 import numpy as np
-from fusiondls import LfuncN, file_read, run_dls, MagneticGeometry
+from fusiondls import LfuncN, MagneticGeometry, run_dls
 from fusiondls.Analytic_DLS import CfInt
 
 
