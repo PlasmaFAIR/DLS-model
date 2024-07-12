@@ -23,9 +23,9 @@ from PySide6.QtWidgets import (
     QLineEdit,
     QMenu,
     QMenuBar,
-    QPlainTextEdit,
     QPushButton,
     QStatusBar,
+    QTextEdit,
     QWidget,
 )
 
@@ -196,7 +196,7 @@ class Ui_FusiondlsGUI:
 
         self.horizontalLayout_3.addWidget(self.runButton)
 
-        self.textOutput = QPlainTextEdit(self.centralwidget)
+        self.textOutput = QTextEdit(self.centralwidget)
         self.textOutput.setObjectName("textOutput")
         self.textOutput.setMaximumSize(QSize(16777215, 100))
 

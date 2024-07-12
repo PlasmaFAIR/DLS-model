@@ -1,5 +1,7 @@
 import pickle
 import sys
+from contextlib import contextmanager
+from io import StringIO
 from typing import Optional
 
 import matplotlib as mpl
@@ -18,6 +20,34 @@ from .plot_widget import MatplotlibWidget
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic fusiondls_gui.ui -o ui_fusiondls.py
 from .ui_fusiondls import Ui_FusiondlsGUI
+
+
+@contextmanager
+def capture_output():
+    """Capture stdout and stderr
+
+    Examples
+    --------
+
+    >>> with capture_output() as (out, err):
+    ...     print("output")
+    >>> print(out.getvalue())
+    # "output"
+
+    """
+
+    stdout_buff = StringIO()
+    stderr_buff = StringIO()
+    old_stdout = sys.stdout
+    old_stderr = sys.stderr
+    sys.stdout = stdout_buff
+    sys.stderr = stderr_buff
+
+    try:
+        yield stdout_buff, stderr_buff
+    finally:
+        sys.stdout = old_stdout
+        sys.stderr = old_stderr
 
 
 class FusiondlsGUI(QMainWindow, Ui_FusiondlsGUI):
@@ -114,12 +144,20 @@ class FusiondlsGUI(QMainWindow, Ui_FusiondlsGUI):
         }
         s_parallel = [self.ui.spar_front_input.value()]
 
-        self.results = run_dls(
-            inputs,
-            self._geometry,
-            s_parallel,
-            control_variable=self.ui.controlVariableComboBox.currentText(),
-        )
+        with capture_output() as (out, err):
+            self.results = run_dls(
+                inputs,
+                self._geometry,
+                s_parallel,
+                control_variable=self.ui.controlVariableComboBox.currentText(),
+            )
+
+        if out_str := out.getvalue():
+            self.ui.textOutput.append(out_str.strip())
+        if err_str := err.getvalue():
+            self.ui.textOutput.append(err_str.strip())
+        if (exc := sys.exc_info()) != (None, None, None):
+            self.ui.textOutput.append(exc[0])
         self.main_plot()
 
     def field_plot(self):
