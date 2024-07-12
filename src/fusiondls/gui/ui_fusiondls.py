@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 ################################################################################
 ## Form generated from reading UI file 'fusiondls_gui.ui'
@@ -10,57 +9,28 @@
 
 from PySide6.QtCore import (
     QCoreApplication,
-    QDate,
-    QDateTime,
-    QLocale,
     QMetaObject,
-    QObject,
-    QPoint,
     QRect,
     QSize,
-    QTime,
-    QUrl,
-    Qt,
-)
-from PySide6.QtGui import (
-    QAction,
-    QBrush,
-    QColor,
-    QConicalGradient,
-    QCursor,
-    QFont,
-    QFontDatabase,
-    QGradient,
-    QIcon,
-    QImage,
-    QKeySequence,
-    QLinearGradient,
-    QPainter,
-    QPalette,
-    QPixmap,
-    QRadialGradient,
-    QTransform,
 )
 from PySide6.QtWidgets import (
-    QApplication,
     QComboBox,
+    QDoubleSpinBox,
     QFormLayout,
     QGridLayout,
     QHBoxLayout,
     QLabel,
     QLineEdit,
-    QMainWindow,
     QMenu,
     QMenuBar,
     QPlainTextEdit,
     QPushButton,
-    QSizePolicy,
     QStatusBar,
     QWidget,
 )
 
 
-class Ui_FusiondlsGUI(object):
+class Ui_FusiondlsGUI:
     def setupUi(self, FusiondlsGUI):
         if not FusiondlsGUI.objectName():
             FusiondlsGUI.setObjectName("FusiondlsGUI")
@@ -71,6 +41,12 @@ class Ui_FusiondlsGUI(object):
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName("gridLayout_2")
+        self.field_plot = QWidget(self.centralwidget)
+        self.field_plot.setObjectName("field_plot")
+        self.field_plot.setMinimumSize(QSize(0, 100))
+
+        self.gridLayout_2.addWidget(self.field_plot, 1, 0, 1, 1)
+
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.formLayout = QFormLayout()
@@ -90,30 +66,60 @@ class Ui_FusiondlsGUI(object):
 
         self.formLayout.setWidget(1, QFormLayout.LabelRole, self.Tt_label)
 
+        self.Tt_input = QLineEdit(self.centralwidget)
+        self.Tt_input.setObjectName("Tt_input")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.Tt_input)
+
         self.qpllu0_label = QLabel(self.centralwidget)
         self.qpllu0_label.setObjectName("qpllu0_label")
 
         self.formLayout.setWidget(2, QFormLayout.LabelRole, self.qpllu0_label)
+
+        self.qpllu0_input = QLineEdit(self.centralwidget)
+        self.qpllu0_input.setObjectName("qpllu0_input")
+
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.qpllu0_input)
 
         self.nu_label = QLabel(self.centralwidget)
         self.nu_label.setObjectName("nu_label")
 
         self.formLayout.setWidget(3, QFormLayout.LabelRole, self.nu_label)
 
+        self.nu_input = QLineEdit(self.centralwidget)
+        self.nu_input.setObjectName("nu_input")
+
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.nu_input)
+
         self.nu0_label = QLabel(self.centralwidget)
         self.nu0_label.setObjectName("nu0_label")
 
         self.formLayout.setWidget(4, QFormLayout.LabelRole, self.nu0_label)
+
+        self.nu0_input = QLineEdit(self.centralwidget)
+        self.nu0_input.setObjectName("nu0_input")
+
+        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.nu0_input)
 
         self.cz0_label = QLabel(self.centralwidget)
         self.cz0_label.setObjectName("cz0_label")
 
         self.formLayout.setWidget(5, QFormLayout.LabelRole, self.cz0_label)
 
+        self.cz0_input = QLineEdit(self.centralwidget)
+        self.cz0_input.setObjectName("cz0_input")
+
+        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.cz0_input)
+
         self.alpha_label = QLabel(self.centralwidget)
         self.alpha_label.setObjectName("alpha_label")
 
         self.formLayout.setWidget(6, QFormLayout.LabelRole, self.alpha_label)
+
+        self.alpha_input = QLineEdit(self.centralwidget)
+        self.alpha_input.setObjectName("alpha_input")
+
+        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.alpha_input)
 
         self.controlVariableLabel = QLabel(self.centralwidget)
         self.controlVariableLabel.setObjectName("controlVariableLabel")
@@ -169,35 +175,15 @@ class Ui_FusiondlsGUI(object):
 
         self.formLayout.setWidget(10, QFormLayout.FieldRole, self.sideComboBox)
 
-        self.Tt_input = QLineEdit(self.centralwidget)
-        self.Tt_input.setObjectName("Tt_input")
+        self.spar_front_label = QLabel(self.centralwidget)
+        self.spar_front_label.setObjectName("spar_front_label")
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.Tt_input)
+        self.formLayout.setWidget(11, QFormLayout.LabelRole, self.spar_front_label)
 
-        self.qpllu0_input = QLineEdit(self.centralwidget)
-        self.qpllu0_input.setObjectName("qpllu0_input")
+        self.spar_front_input = QDoubleSpinBox(self.centralwidget)
+        self.spar_front_input.setObjectName("spar_front_input")
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.qpllu0_input)
-
-        self.nu_input = QLineEdit(self.centralwidget)
-        self.nu_input.setObjectName("nu_input")
-
-        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.nu_input)
-
-        self.nu0_input = QLineEdit(self.centralwidget)
-        self.nu0_input.setObjectName("nu0_input")
-
-        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.nu0_input)
-
-        self.cz0_input = QLineEdit(self.centralwidget)
-        self.cz0_input.setObjectName("cz0_input")
-
-        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.cz0_input)
-
-        self.alpha_input = QLineEdit(self.centralwidget)
-        self.alpha_input.setObjectName("alpha_input")
-
-        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.alpha_input)
+        self.formLayout.setWidget(11, QFormLayout.FieldRole, self.spar_front_input)
 
         self.horizontalLayout.addLayout(self.formLayout)
 
@@ -217,12 +203,6 @@ class Ui_FusiondlsGUI(object):
         self.horizontalLayout_3.addWidget(self.textOutput)
 
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 3, 0, 1, 1)
-
-        self.field_plot = QWidget(self.centralwidget)
-        self.field_plot.setObjectName("field_plot")
-        self.field_plot.setMinimumSize(QSize(0, 100))
-
-        self.gridLayout_2.addWidget(self.field_plot, 1, 0, 1, 1)
 
         self.gridLayout_3.addLayout(self.gridLayout_2, 0, 0, 1, 1)
 
@@ -262,14 +242,24 @@ class Ui_FusiondlsGUI(object):
             QCoreApplication.translate("FusiondlsGUI", "7", None)
         )
         self.Tt_label.setText(QCoreApplication.translate("FusiondlsGUI", "Tt", None))
+        self.Tt_input.setText(QCoreApplication.translate("FusiondlsGUI", "0.5", None))
         self.qpllu0_label.setText(
             QCoreApplication.translate("FusiondlsGUI", "qpllu0", None)
         )
+        self.qpllu0_input.setText(
+            QCoreApplication.translate("FusiondlsGUI", "1e9", None)
+        )
         self.nu_label.setText(QCoreApplication.translate("FusiondlsGUI", "nu", None))
+        self.nu_input.setText(QCoreApplication.translate("FusiondlsGUI", "1e20", None))
         self.nu0_label.setText(QCoreApplication.translate("FusiondlsGUI", "nu0", None))
+        self.nu0_input.setText(QCoreApplication.translate("FusiondlsGUI", "1e20", None))
         self.cz0_label.setText(QCoreApplication.translate("FusiondlsGUI", "cz0", None))
+        self.cz0_input.setText(QCoreApplication.translate("FusiondlsGUI", "0.02", None))
         self.alpha_label.setText(
             QCoreApplication.translate("FusiondlsGUI", "alpha", None)
+        )
+        self.alpha_input.setText(
+            QCoreApplication.translate("FusiondlsGUI", "1000", None)
         )
         self.controlVariableLabel.setText(
             QCoreApplication.translate("FusiondlsGUI", "control variable", None)
@@ -294,15 +284,8 @@ class Ui_FusiondlsGUI(object):
             QCoreApplication.translate("FusiondlsGUI", "design", None)
         )
         self.sideLabel.setText(QCoreApplication.translate("FusiondlsGUI", "side", None))
-        self.Tt_input.setText(QCoreApplication.translate("FusiondlsGUI", "0.5", None))
-        self.qpllu0_input.setText(
-            QCoreApplication.translate("FusiondlsGUI", "1e9", None)
-        )
-        self.nu_input.setText(QCoreApplication.translate("FusiondlsGUI", "1e20", None))
-        self.nu0_input.setText(QCoreApplication.translate("FusiondlsGUI", "1e20", None))
-        self.cz0_input.setText(QCoreApplication.translate("FusiondlsGUI", "0.02", None))
-        self.alpha_input.setText(
-            QCoreApplication.translate("FusiondlsGUI", "1000", None)
+        self.spar_front_label.setText(
+            QCoreApplication.translate("FusiondlsGUI", "SparFront", None)
         )
         self.runButton.setText(QCoreApplication.translate("FusiondlsGUI", "&Run", None))
         self.menuFile.setTitle(

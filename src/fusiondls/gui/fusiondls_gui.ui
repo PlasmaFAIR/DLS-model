@@ -17,6 +17,16 @@
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QWidget" name="field_plot" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
@@ -42,10 +52,24 @@
             </property>
            </widget>
           </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="Tt_input">
+            <property name="text">
+             <string>0.5</string>
+            </property>
+           </widget>
+          </item>
           <item row="2" column="0">
            <widget class="QLabel" name="qpllu0_label">
             <property name="text">
              <string>qpllu0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="qpllu0_input">
+            <property name="text">
+             <string>1e9</string>
             </property>
            </widget>
           </item>
@@ -56,10 +80,24 @@
             </property>
            </widget>
           </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="nu_input">
+            <property name="text">
+             <string>1e20</string>
+            </property>
+           </widget>
+          </item>
           <item row="4" column="0">
            <widget class="QLabel" name="nu0_label">
             <property name="text">
              <string>nu0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="nu0_input">
+            <property name="text">
+             <string>1e20</string>
             </property>
            </widget>
           </item>
@@ -70,10 +108,24 @@
             </property>
            </widget>
           </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="cz0_input">
+            <property name="text">
+             <string>0.02</string>
+            </property>
+           </widget>
+          </item>
           <item row="6" column="0">
            <widget class="QLabel" name="alpha_label">
             <property name="text">
              <string>alpha</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="alpha_input">
+            <property name="text">
+             <string>1000</string>
             </property>
            </widget>
           </item>
@@ -144,47 +196,15 @@
           <item row="10" column="1">
            <widget class="QComboBox" name="sideComboBox"/>
           </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="Tt_input">
+          <item row="11" column="0">
+           <widget class="QLabel" name="spar_front_label">
             <property name="text">
-             <string>0.5</string>
+             <string>SparFront</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="qpllu0_input">
-            <property name="text">
-             <string>1e9</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="nu_input">
-            <property name="text">
-             <string>1e20</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="nu0_input">
-            <property name="text">
-             <string>1e20</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLineEdit" name="cz0_input">
-            <property name="text">
-             <string>0.02</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QLineEdit" name="alpha_input">
-            <property name="text">
-             <string>1000</string>
-            </property>
-           </widget>
+          <item row="11" column="1">
+           <widget class="QDoubleSpinBox" name="spar_front_input"/>
           </item>
          </layout>
         </item>
@@ -210,16 +230,6 @@
          </widget>
         </item>
        </layout>
-      </item>
-      <item row="1" column="0">
-       <widget class="QWidget" name="field_plot" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>100</height>
-         </size>
-        </property>
-       </widget>
       </item>
      </layout>
     </item>
