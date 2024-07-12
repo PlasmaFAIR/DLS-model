@@ -14,7 +14,7 @@ def _drop_properties(data: dict) -> dict:
     """Helper function to remove dict keys that are now properties in `MagneticGeometry`"""
 
     for var in ("Sx", "Spolx", "Bx", "zx"):
-        data.pop(var)
+        data.pop(var, None)
     return data
 
 

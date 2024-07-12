@@ -52,10 +52,16 @@ linting = [
   "isort",
   "ruff",
 ]
+gui = [
+  "pyside6",
+]
 
 [project.urls]
 Source = "https://github.com/cydcowley/DLS-model"
 Tracker = "https://github.com/cydcowley/DLS-model/issues"
+
+[project.gui-scripts]
+fusiondls-gui = "fusiondls:gui.run_gui"
 
 [tool.setuptools.packages.find]
 where = ["src"]
