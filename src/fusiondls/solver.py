@@ -168,6 +168,81 @@ class SimulationInputs:
         self.Lz = [Tcool, Lalpha]
 
 
+@dataclass
+class SimulationOutput:
+    r"""Output from the fusiondls model
+
+    Attributes
+    ----------
+    Splot: FloatArray
+        :math:`S_\parallel` of each front location
+    SpolPlot: FloatArray
+        :math:`S_{poloidal}` of each front locations
+    cvar: FloatArray
+        Control variable
+    Sprofiles: FloatArray
+        :math:`S_\parallel` profiles for each front location
+    Tprofiles: FloatArray
+        Temperature profiles
+    Rprofiles: FloatArray
+        Radiation in W/m^3
+    Qprofiles: FloatArray
+        Heat flux in W/m^2
+    Spolprofiles: FloatArray
+    Btotprofiles: FloatArray
+    Bpolprofiles: FloatArray
+    Xpoints: FloatArray
+    Wradials: FloatArray
+    logs: dict
+    spar_onset: int
+    spol_onset: int
+    splot: FloatArray
+    crel: FloatArray
+    cvar_trim: FloatArray
+    crel_trim: FloatArray
+    threshold: float
+    window: float
+    window_frac: float
+    window_ratio: float
+    inputs: SimulationInputs
+    state: SimulationState
+
+    """
+
+    Splot: FloatArray
+    SpolPlot: FloatArray
+    cvar: list[FloatArray]
+    Sprofiles: list[FloatArray]
+    Tprofiles: list[FloatArray]
+    Rprofiles: list[FloatArray]
+    Qprofiles: list[FloatArray]
+    Spolprofiles: list[FloatArray]
+    Btotprofiles: list[FloatArray]
+    Bpolprofiles: list[FloatArray]
+    Xpoints: list[FloatArray]
+    Wradials: list[FloatArray]
+    logs: dict
+    spar_onset: int
+    spol_onset: int
+    splot: list[FloatArray]
+    crel: list[FloatArray]
+    cvar_trim: list[FloatArray]
+    crel_trim: list[FloatArray]
+    threshold: float
+    window: float
+    window_frac: float
+    window_ratio: float
+    inputs: SimulationInputs
+    state: SimulationState
+
+    def __getitem__(self, name: str):
+        return getattr(self, name)
+
+    @property
+    def cvar_norm(self) -> float:
+        return self.cvar / self.cvar[0]
+
+
 def run_dls(
     constants: dict,
     geometry: MagneticGeometry,
@@ -519,16 +594,12 @@ def run_dls(
     elif len(SparRange) == 1:
         output["crel"] = 1
         output["threshold"] = st.cvar
-    output["constants"] = asdict(si)
-    output["state"] = st
 
-    # Convert back to regular dict
-    output = dict(output)
     t1 = timer()
 
     print(f"Complete in {t1 - t0:.1f} seconds")
 
-    return output
+    return SimulationOutput(inputs=si, state=st, **output)
 
 
 def LengFunc(
