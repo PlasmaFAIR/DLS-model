@@ -1,7 +1,8 @@
 from collections import defaultdict
 from collections.abc import Callable
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from timeit import default_timer as timer
+from typing import Optional
 
 import numpy as np
 from scipy import interpolate
@@ -222,18 +223,18 @@ class SimulationOutput:
     Xpoints: list[FloatArray]
     Wradials: list[FloatArray]
     logs: dict
-    spar_onset: int
-    spol_onset: int
-    splot: list[FloatArray]
     crel: list[FloatArray]
-    cvar_trim: list[FloatArray]
-    crel_trim: list[FloatArray]
     threshold: float
-    window: float
-    window_frac: float
-    window_ratio: float
     inputs: SimulationInputs
     state: SimulationState
+    window: Optional[float] = None
+    window_frac: Optional[float] = None
+    window_ratio: Optional[float] = None
+    spar_onset: Optional[int] = None
+    spol_onset: Optional[int] = None
+    splot: Optional[list[FloatArray]] = None
+    cvar_trim: Optional[list[FloatArray]] = None
+    crel_trim: Optional[list[FloatArray]] = None
 
     def __getitem__(self, name: str):
         return getattr(self, name)
